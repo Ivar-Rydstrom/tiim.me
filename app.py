@@ -1,26 +1,30 @@
 from flask import Flask, render_template, url_for, make_response, request
+import datetime
+import json
+from event_json import eventToJson, jsonToEvent
+from event import Event
+from cookies import getCookie
+
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def index():
-    return render_template('index.html')
+    if request.method == 'POST':
+        form = request.form
+        default_name = 0
+        event = Event(
+            form.get('title', default_name),
+            form.get('description', default_name),
+            'time',
+            form.get('end_date', default_name))
+        response = make_response(render_template('index.html'))
+        response.set_cookie('event', eventToJson(event))
+        return response
 
-
-@app.route('/set')
-def setCookie():
-    response = make_response('set cookie')
-    response.set_cookie('framework', 'flask')
-    return response
-
-
-@app.route('/get')
-def getCookie():
-    framework = request.cookies.get('framework')
-    return 'framework: ' + framework
-
-
+    else:
+        return render_template('index.html')
 
 
 if __name__ == '__main__':
