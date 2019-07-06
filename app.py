@@ -1,9 +1,8 @@
 from flask import Flask, render_template, url_for, make_response, request
 import datetime
 import json
-from event_json import eventToJson, jsonToEvent
+from event_json import eventToJson, jsonToEvents, eventToDict, dictToEvent
 from event import Event
-from cookies import getCookie
 
 
 app = Flask(__name__)
@@ -18,10 +17,22 @@ def index():
             form.get('title', default_name),
             form.get('description', default_name),
             'time',
-            form.get('end_date', default_name))
-        response = make_response(render_template('index.html'))
-        response.set_cookie('event', eventToJson(event))
-        return response
+            form.get('end_time', default_name))
+
+        if 'events' in request.cookies:
+            response = make_response(render_template('index.html'))
+            events_str = request.cookies.get('events')
+            events = jsonToEvents(events_str)
+            events.append(eventToDict(event))
+            response.set_cookie('events', json.dumps(events))
+            return response
+
+        else:
+            response = make_response(render_template('index.html'))
+            events = []
+            events.append(eventToDict(event))
+            response.set_cookie('events', json.dumps(events))
+            return response
 
     else:
         return render_template('index.html')

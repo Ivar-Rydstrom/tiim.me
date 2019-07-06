@@ -1,5 +1,4 @@
 from flask import Flask, render_template, url_for, make_response, request
-from cookies import getCookie
 
 
 class Event:
