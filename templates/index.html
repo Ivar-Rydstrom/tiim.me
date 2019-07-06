@@ -3,7 +3,7 @@
 
 {% block head %}
 
-<title>Tiim</title>
+  <title>Tiim</title>
 
 
 
@@ -12,12 +12,34 @@
 
 {% block body %}
 
-<form action="/" method="POST">
-  <input type="text" name="title" id="title">
-  <input type="text" name="description" id="description">
-  <input type="text" name="end_time" id="end_time">
-  <input type="submit" value="Add Event">
-</form>
+
+  <table>
+
+    <tr>
+      <th>Event</th>
+      <th>Description</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+    </tr>
+
+    {% for event in events %}
+      <tr>
+        <td>{{ event.title }}</td>
+        <td>{{ event.description}}</td>
+        <td>{{ event.created_time }}</td>
+        <td>{{ event.end_time }}</td>
+
+      </tr>
+    {% endfor %}
+
+  </table>
+
+  <form action="/" method="POST">
+    <input type="text" name="title" id="title">
+    <input type="text" name="description" id="description">
+    <input type="text" name="end_time" id="end_time">
+    <input type="submit" value="Add Event">
+  </form>
 
 
 

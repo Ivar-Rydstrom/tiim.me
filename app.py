@@ -21,8 +21,8 @@ def index():
 
         if 'events' in request.cookies:
             response = make_response(render_template('index.html'))
-            events_str = request.cookies.get('events')
-            events = jsonToEvents(events_str)
+            events_json = request.cookies.get('events')
+            events = jsonToEvents(events_json)
             events.append(eventToDict(event))
             response.set_cookie('events', json.dumps(events))
             return response
@@ -35,7 +35,10 @@ def index():
             return response
 
     else:
-        return render_template('index.html')
+        events_json = request.cookies.get('events')
+        events = jsonToEvents(events_json)
+        dict = events
+        return render_template('index.html', events=events)
 
 
 if __name__ == '__main__':
