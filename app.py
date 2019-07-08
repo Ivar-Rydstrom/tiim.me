@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, make_response, request, redir
 import datetime
 import json
 from event_json import eventToJson, jsonToEvents, eventToDict, dictToEvent
+from dates import datetimeToDict
 from event import Event
 
 
@@ -10,16 +11,17 @@ app = Flask(__name__)
 
 @app.route('/', methods=['POST', 'GET'])
 def index():
-    if request.method == 'POST':
+
+    if request.method == 'POST':  # POST method on index route
         form = request.form
         default_name = 0
-        event = Event(
+        event = Event(  # create event object from form data
             form.get('title', default_name),
             form.get('description', default_name),
-            'time',
+            datetimeToDict(datetime.datetime.now()),
             form.get('end_time', default_name))
 
-        if 'events' in request.cookies:
+        if 'events' in request.cookies:  # if cookie allready exists
             events_json = request.cookies.get('events')
             events = jsonToEvents(events_json)
             events.append(eventToDict(event))
@@ -27,20 +29,21 @@ def index():
             response.set_cookie('events', json.dumps(events))
             return response
 
-        else:
+        else:  # if cookie does not allready exist
             events = []
             events.append(eventToDict(event))
-            response = make_response(render_template('index.html', events=events))
+            response = make_response(redirect('/'))
             response.set_cookie('events', json.dumps(events))
             return response
 
-    else:
-        if 'events' in request.cookies:
+
+    else:  # GET method on index route
+        if 'events' in request.cookies:  # if cookie allready exists
             events_json = request.cookies.get('events')
             events = jsonToEvents(events_json)
             return render_template('index.html', events=events)
 
-        else:
+        else:  # if cookie does not allready exist
             return render_template('index.html')
 
 

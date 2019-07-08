@@ -13,7 +13,7 @@
 {% block body %}
 
 
-  <table>
+  <table id='events'>
 
     <tr>
       <th>Event</th>
@@ -25,21 +25,28 @@
     {% for event in events %}
       <tr>
         <td>{{ event.title }}</td>
-        <td>{{ event.description}}</td>
-        <td>{{ event.created_time }}</td>
+        <td>{{ event.description }}</td>
+        <td>{{ event.created_time.month|string + '/' +
+          event.created_time.day|string + '/' +
+          event.created_time.year|string }} <br/>
+          {{ event.created_time.hour|string + ':' +
+          event.created_time.minute|string }}</td>
         <td>{{ event.end_time }}</td>
 
       </tr>
     {% endfor %}
 
+    <tr id="form_row" >
+      <form action="/" method="POST">
+        <td><input type="text" name="title" id="title"></td>
+        <td><input type="text" name="description" id="description"></td>
+        <td><input type="text" name="end_time" id="end_time"></td>
+        <td><input type="submit" value="Add Event"></td>
+      </form>
+    </tr>
+
   </table>
 
-  <form action="/" method="POST">
-    <input type="text" name="title" id="title">
-    <input type="text" name="description" id="description">
-    <input type="text" name="end_time" id="end_time">
-    <input type="submit" value="Add Event">
-  </form>
 
 
 
