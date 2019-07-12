@@ -30,14 +30,4 @@ description.onblur = function() {
 
 
 var end_time = document.getElementById('end_time');
-
-
-var today = new Date();
-var second = String(0);
-var minute = String(today.getMinutes()).padStart(2, '0');
-var hour = String(today.getHours()).padStart(2, '0');
-var day = String(today.getDate()).padStart(2,'0');
-var month = String(today.getMonth() + 1).padStart(2, '0');
-var year = String(today.getFullYear());
-today_string = year + '-' + month + '-' + day + 'T' + hour + ':' + minute;
-end_time.value = today_string;
+end_time.value = get_current_time_ISO();
