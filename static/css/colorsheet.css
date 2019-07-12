@@ -1,0 +1,10 @@
+:root {
+  --background-color: white;
+  --fonts: "Trebuchet MS", Arial, Helvetica, sans-serif;
+
+  --table-header-background: #4CAF50;
+  --table-header-text: white;
+  --table-row-1: white;
+  --table-row-2: #f2f2f2;
+  --table-row-hover: #ddd;
+}

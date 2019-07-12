@@ -2,7 +2,7 @@ from flask import Flask, render_template, url_for, make_response, request, redir
 import datetime
 import json
 from event_json import eventToJson, jsonToEvents, eventToDict, dictToEvent
-from dates import datetimeToDict
+from dates import datetimeToDict, ISOStringToDict
 from event import Event
 
 
@@ -18,8 +18,9 @@ def index():
         event = Event(  # create event object from form data
             form.get('title', default_name),
             form.get('description', default_name),
-            datetimeToDict(datetime.datetime.now()),
-            form.get('end_time', default_name))
+            ISOStringToDict(form.get('created_time', default_name)),
+            ISOStringToDict(form.get('end_time', default_name))
+        )
 
         if 'events' in request.cookies:  # if cookie allready exists
             events_json = request.cookies.get('events')

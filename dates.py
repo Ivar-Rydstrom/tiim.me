@@ -1,6 +1,6 @@
 from datetime import datetime
 from event import Event
-
+import re
 
 def datetimeToDict(_datetime):
     dict = {
@@ -26,8 +26,14 @@ def dictToDatetime(dict):
     return _datetime
 
 
-def strToDatetime(datetime_str):
-
-    return
-
-# str(datetime.datetime.now()).split('.', 1)[0]
+def ISOStringToDict(ISOString):
+    splits = re.split('[-T:]', ISOString)
+    dict = {
+        'year': splits[0],
+        'month': splits[1],
+        'day': splits[2],
+        'hour': splits[3],
+        'minute': splits[4],
+        'second': '0'
+    }
+    return dict

@@ -1,11 +1,11 @@
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: var(--fonts);
 }
 
 
 #events {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-family: var(--fonts);
   borderless-collapse: collapse;
   width: 100%;
 }
@@ -18,12 +18,12 @@ body {
 
 
 #events tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: var(--table-row-2);
 }
 
 
 #events tr:nth-last-child(n+2):hover {
-  background-color: #ddd;
+  background-color: var(--table-row-hover);
 }
 
 
@@ -31,11 +31,11 @@ body {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
-  color: white;
+  background-color: var(--table-header-background);
+  color: var(--table-header-text);
 }
 
 
 #form_row {
-  background-color: #f2f2f2;
+  background-color: var(--table-row-2);
 }
