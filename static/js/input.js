@@ -17,14 +17,14 @@ title.onblur = function() {
 var description = document.getElementById('description');
 
 description.onfocus = function() {
-  if (description.value == 'Description') {
+  if (description.value == 'Event Description') {
     description.value = '';
   }
 }
 
 description.onblur = function() {
   if (description.value == '') {
-    description.value = 'Description';
+    description.value = 'Event Description';
   }
 }
 
