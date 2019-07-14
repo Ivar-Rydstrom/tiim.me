@@ -2,14 +2,18 @@
 var title = document.getElementById('title');
 
 title.onfocus = function() {
-  if (title.value == 'Event Name') {
+  if (title.value == default_event) {
     title.value = '';
   }
 }
 
 title.onblur = function() {
   if (title.value == '') {
-    title.value = 'Event Name';
+    title.filled = false;
+    title.value = default_event;
+  } else {
+    title.filled = true;
+    check_filled();
   }
 }
 
@@ -17,14 +21,18 @@ title.onblur = function() {
 var description = document.getElementById('description');
 
 description.onfocus = function() {
-  if (description.value == 'Event Description') {
+  if (description.value == default_description) {
     description.value = '';
   }
 }
 
 description.onblur = function() {
   if (description.value == '') {
-    description.value = 'Event Description';
+    description.filled = false;
+    description.value = default_description;
+  } else {
+    description.filled = true;
+    check_filled()
   }
 }
 

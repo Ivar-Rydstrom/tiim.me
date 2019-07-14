@@ -1,4 +1,9 @@
+// Store default values for parametric updating
+var default_event = 'Event Name';
+var default_description = 'Event Description';
 
+
+// Returns current String time in ISO format
 var get_current_time_ISO = function() {
   var today = new Date();
   var second = String(0);

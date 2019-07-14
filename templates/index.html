@@ -46,14 +46,17 @@
         <td><input type="text" name="title" id="title" value="Event Name" autocomplete="off" required="true"></td>
         <td><input type="text" name="description" id="description" value="Event Description" autocomplete="off" required="true"></td>
         <td><input type="datetime-local" name="end_time" id="end_time" required="true"></td>
-        <td><input type="submit" value="Add Event"></td>
+        <td>
+          <input type="submit" id="submit" value="Add Event" disabled="true">
+          {% if error is defined %}
+          <div id="error">{{ error.message }}</div>
+          {% endif %}
+
+        </td>
       </form>
     </tr>
 
   </table>
-
-
-
 
 
 {% endblock %}
