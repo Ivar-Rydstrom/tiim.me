@@ -15,3 +15,8 @@ var get_current_time_ISO = function() {
   today_string = year + '-' + month + '-' + day + 'T' + hour + ':' + minute;
   return today_string;
 }
+
+
+// enforce minimum date settable through form
+var datetime = document.getElementById('end_time');
+datetime.min = get_current_time_ISO();
