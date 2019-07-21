@@ -12,51 +12,57 @@
 
 {% block body %}
 
+  <div id="table-wrapper">
+    <table id="events">
 
-  <table id='events'>
-
-    <tr>
-      <th>Event</th>
-      <th>Description</th>
-      <th>End Time</th>
-      <th>Start Time</th>
-    </tr>
-
-    {% for event in events %}
       <tr>
-        <td>{{ event.title }}</td>
-        <td>{{ event.description }}</td>
-        <td>{{ event.end_time.month|string + '/' +
-          event.end_time.day|string + '/' +
-          event.end_time.year|string }} <br/>
-          {{ event.end_time.hour|string + ':' +
-          event.end_time.minute|string }}</td>
-        <td>{{ event.created_time.month|string + '/' +
-          event.created_time.day|string + '/' +
-          event.created_time.year|string }} <br/>
-          {{ event.created_time.hour|string + ':' +
-          event.created_time.minute|string }}</td>
-
+        <th>Event</th>
+        <th>Description</th>
+        <th>End Time</th>
+        <th>Start Time</th>
       </tr>
-    {% endfor %}
 
-    <tr id="form_row" >
-      <form action="/" method="POST">
-        <input type="hidden" name="created_time" id="created_time">
-        <td><input type="text" name="title" id="title" value="Event Name" autocomplete="off" required="true"></td>
-        <td><input type="text" name="description" id="description" value="Event Description" autocomplete="off" required="true"></td>
-        <td><input type="datetime-local" name="end_time" id="end_time" required="true"></td>
-        <td>
-          <input type="submit" id="submit" value="Add Event" disabled="true">
-          {% if error is defined %}
-          <div id="error">{{ error.message }}</div>
-          {% endif %}
+      {% for event in events %}
+        <tr>
+          <td>{{ event.title }}</td>
+          <td>{{ event.description }}</td>
+          <td>{{ event.end_time.month|string + '/' +
+            event.end_time.day|string + '/' +
+            event.end_time.year|string }} <br/>
+            {{ event.end_time.hour|string + ':' +
+            event.end_time.minute|string }}</td>
+          <td>{{ event.created_time.month|string + '/' +
+            event.created_time.day|string + '/' +
+            event.created_time.year|string }} <br/>
+            {{ event.created_time.hour|string + ':' +
+            event.created_time.minute|string }}</td>
 
-        </td>
-      </form>
-    </tr>
+        </tr>
+      {% endfor %}
 
-  </table>
+      <tr id="form_row" >
+        <form action="/" method="POST">
+          <input type="hidden" name="created_time" id="created_time">
+          <td><input type="text" name="title" id="title" value="Event Name" autocomplete="off" required="true"></td>
+          <td><input type="text" name="description" id="description" value="Event Description" autocomplete="off" required="true"></td>
+          <td><input type="datetime-local" name="end_time" id="end_time" required="true"></td>
+          <td>
+            <input type="submit" id="submit" value="Add Event" disabled="true">
+            {% if error is defined %}
+            <div id="error">{{ error.message }}</div>
+            {% endif %}
+
+          </td>
+        </form>
+      </tr>
+
+    </table>
+  </div>
+
+
+  <nav id="sidebar">
+    sidebar content
+  </nav>
 
 
 {% endblock %}

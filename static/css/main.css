@@ -1,13 +1,21 @@
 body {
   margin: 0;
   font-family: var(--fonts);
+  background-color: var(--background-color)
+}
+
+#table-wrapper {
+  width: 1690px;
+  margin-top: 10px;
+  margin-left: 230px;
 }
 
 
 #events {
-  font-family: var(--fonts);
-  borderless-collapse: collapse;
-  width: 100%;
+  border-collapse: collapse;
+  border-color: var(--border-color);
+  width: 78%;
+  margin: 0 auto;
 }
 
 
@@ -38,4 +46,21 @@ body {
 
 #form_row {
   background-color: var(--table-row-2);
+}
+
+
+#sidebar {
+  box-sizing: border-box;
+  border-width: 0 1px 0 0;
+  border-style: solid;
+  border-color: var(--border-color);
+  width: 230px;
+  height: 100%;
+  position: fixed;
+  overflow-x: hidden;
+  top: 0;
+  left: 0;
+  float: left;
+  background-color: var(--sidebar-background);
+  z-index: 1;
 }
