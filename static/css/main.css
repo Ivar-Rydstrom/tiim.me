@@ -64,3 +64,57 @@ body {
   background-color: var(--sidebar-background);
   z-index: 1;
 }
+
+
+#sidebar img {
+  height: 50px;
+  width: 230px;
+  top: 0;
+  left: 0;
+}
+
+
+#sidebar .nav-button {
+  float: left;
+  display: block;
+  text-align: left;
+  margin: 15px 25px;
+  text-decoration: none;
+  line-height:30px;
+  font-size: 17px;
+  width: 180px;
+  height: 30px;
+  background-color: var(--sidebar-button-background);
+  color: var(--sidebar-button-text);
+}
+
+
+#sidebar .nav-button div {
+  padding-left: 10px;
+}
+
+
+#sidebar .nav-button:hover {
+  background-color: var(--sidebar-button-background-hover);
+  color: var(--sidebar-button-text-hover);
+}
+
+
+#sidebar .nav-watermark {
+  z-index: 2;
+  position: absolute;
+  width:230px;
+  text-align: center;
+  bottom: 10px;
+}
+
+
+#sidebar .nav-watermark a {
+  text-decoration: none;
+  color: #747474;
+}
+
+
+#sidebar .nav-watermark a:hover {
+  color: black;
+}

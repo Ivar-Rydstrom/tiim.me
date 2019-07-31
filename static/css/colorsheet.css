@@ -10,4 +10,8 @@
   --table-row-hover: #ddd;
 
   --sidebar-background: white;
+  --sidebar-button-background: var(--sidebar-background);
+  --sidebar-button-background-hover: #666;
+  --sidebar-button-text: #003152;
+  --sidebar-button-text-hover: white;
 }
