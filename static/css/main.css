@@ -119,3 +119,27 @@ body {
 #sidebar .nav-watermark a:hover {
   color: black;
 }
+
+
+#sidebar .popup-menu {
+  display: none;
+  width: 358px;
+  position: fixed;
+  z-index: 3;
+  left: 205px;
+}
+
+
+#sidebar #popup-settings {
+  top: 93px;
+}
+
+
+#sidebar #popup-help {
+  top: 153px;
+}
+
+
+#sidebar #popup-information {
+  top: 213px;
+}
