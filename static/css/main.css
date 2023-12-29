@@ -5,7 +5,7 @@ body {
 }
 
 #table-wrapper {
-  width: 1690px;
+  width: auto;
   margin-top: 10px;
   margin-left: 230px;
 }
@@ -14,8 +14,9 @@ body {
 #events {
   border-collapse: collapse;
   border-color: var(--border-color);
-  width: 78%;
+  width: 90%;
   margin: 0 auto;
+  margin-left:
 }
 
 
